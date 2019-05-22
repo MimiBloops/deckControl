@@ -1,12 +1,14 @@
 #include <Keyboard.h>
 
 //PIN DECLARATION
-const int pinButton1 = 13;
-const int pinButton2 = 12;
-const int pinButton3 = 11;
-const int pinButton4 = 10;
-const int pinButton5 = 9;
-const int pinButton6 = 8;
+// const int pinButton1 = 13;
+// const int pinButton2 = 12;
+// const int pinButton3 = 11;
+// const int pinButton4 = 10;
+// const int pinButton5 = 9;
+// const int pinButton6 = 8;
+
+int buttonsPins [] = {13,12,11,10,9,8};
 
 const int pinSwitchPage1 = 7;
 const int pinSwitchPage2 = 6;
@@ -35,12 +37,18 @@ unsigned long debouceDelay = 50;
 
 void setup()
 {
-  pinMode(pinButton1, INPUT_PULLUP);
-  pinMode(pinButton2, INPUT_PULLUP);
-  pinMode(pinButton3, INPUT_PULLUP);
-  pinMode(pinButton4, INPUT_PULLUP);
-  pinMode(pinButton5, INPUT_PULLUP);
-  pinMode(pinButton6, INPUT_PULLUP);
+  // pinMode(pinButton1, INPUT_PULLUP);
+  // pinMode(pinButton2, INPUT_PULLUP);
+  // pinMode(pinButton3, INPUT_PULLUP);
+  // pinMode(pinButton4, INPUT_PULLUP);
+  // pinMode(pinButton5, INPUT_PULLUP);
+  // pinMode(pinButton6, INPUT_PULLUP);
+
+  for (byte i = 0; i < (sizeof(buttonsPins) / sizeof(buttonsPins[0])); i++)
+  {
+    pinMode(buttonsPins[i], INPUT_PULLUP);
+  }
+  
   
   pinMode(pinSwitchProfil, INPUT);
 
@@ -134,7 +142,7 @@ void loop()
 
       if (readingButton1 == LOW) {
         Serial.println("Bouton 1 - ON");
-        Serial.println("Ligne : ");
+        Serial.println("Page : ");
         Serial.println(line);
         Keyboard.write(shortcutValueButton1);
         delay(100);
@@ -147,7 +155,7 @@ void loop()
 
       if (readingButton2 == LOW) {
         Serial.println("Bouton 2 - ON");
-        Serial.println("Ligne : ");
+        Serial.println("Page : ");
         Serial.println(line);
         Keyboard.write(shortcutValueButton2);
         delay(100);
@@ -160,7 +168,7 @@ void loop()
 
       if (readingButton3 == LOW) {
         Serial.println("Bouton 3 - ON");
-        Serial.println("Ligne : ");
+        Serial.println("Page : ");
         Serial.println(line);
         Keyboard.write(shortcutValueButton3);
         delay(100);
@@ -173,7 +181,7 @@ void loop()
 
       if (readingButton4 == LOW) {
         Serial.println("Bouton 4 - ON");
-        Serial.println("Ligne : ");
+        Serial.println("Page : ");
         Serial.println(line);
         Keyboard.write(shortcutValueButton4);
         delay(100);
@@ -186,7 +194,7 @@ void loop()
 
       if (readingButton5 == LOW) {
         Serial.println("Bouton 5 - ON");
-        Serial.println("Ligne : ");
+        Serial.println("Page : ");
         Serial.println(line);
         Keyboard.write(shortcutValueButton5);
         delay(100);
@@ -199,7 +207,7 @@ void loop()
 
       if (readingButton6 == LOW) {
         Serial.println("Bouton 6 - ON");
-        Serial.println("Ligne : ");
+        Serial.println("Page : ");
         Serial.println(line);
         Keyboard.write(shortcutValueButton6);
         delay(100);
